@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnList</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+</head>
+<body class="p-3">
+<div class="container mt-5">
+    <h1 class="text-center mb-5">UnListAdminVersion</h1>
+    <table class="table table-bordered">
+        <thead class="table-dark">
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Lesson</th>
+        <th>Action</th>
+        <th>id_teacher</th>
+        <th>id_lesson</th>
+    </tr>
+        </thead>
+        <tbody>
+        <tr th:each="teacherLesson : ${teacherLessons}">
+        <td th:text="${teacherLesson.id}"></td>
+        <td th:text="${teacherLesson.teacher.first_name}"></td>
+        <td th:text="${teacherLesson.teacher.last_name}"></td>
+        <td th:text="${teacherLesson.lesson.name_lesson}"></td>
+        <td th:text="${teacherLesson.teacher.getId_teacher()}"></td>
+        <td th:text="${teacherLesson.lesson.getId_lesson()}"></td>
+            <td>
+                <a th:href ="@{/CRUD_teacher/edit(id=${teacherLesson.id})}"  class="btn btn-primary me-2">edit</a>
+            </td>
+    </tr>
+    </tbody>
+    </table>
+    <a href ="/CRUD_teacher/createTeacher" class="btn btn-success">New User</a>
+    <a href="/profile" class="btn btn-secondary"> Back </a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>
